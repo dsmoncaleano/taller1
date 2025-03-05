@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class JavaApplication6 {
+    public static void main(String[] args) {
+        int[][] ventas = {
+            {10, 51, 14, 16, 18, 20},
+            {15, 11, 9, 18, 3, 90},
+            {13, 31, 35, 37, 39, 36},
+            {12, 55, 56, 57, 59, 24},
+            {45, 87, 7, 9, 213, 22},
+            {78, 119, 62, 61, 367, 20}
+        };
+
+        int[] sumaPorMes = new int[6];
+        int[] sumaPorAnio = new int[6];
+        int minVentas = Integer.MAX_VALUE, maxVentas = Integer.MIN_VALUE;
+        int minMes = 0, minAnio = 0, maxMes = 0, maxAnio = 0;
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                sumaPorMes[i] += ventas[j][i];
+                sumaPorAnio[j] += ventas[j][i];
+
+                if (ventas[j][i] < minVentas) {
+                    minVentas = ventas[j][i];
+                    minMes = i;
+                    minAnio = j;
+                }
+                if (ventas[j][i] > maxVentas) {
+                    maxVentas = ventas[j][i];
+                    maxMes = i;
+                    maxAnio = j;
+                }
+            }
+        }
+
+        System.out.println("Suma de ventas por mes: " + Arrays.toString(sumaPorMes));
+        System.out.println("Suma de ventas por año: " + Arrays.toString(sumaPorAnio));
+        System.out.println("Mes con menor ventas: " + obtenerMes(minMes) + " con " + minVentas);
+        System.out.println("Año con menor ventas: " + (2020 + minAnio) + " con " + minVentas);
+        System.out.println("Mes con mayor ventas: " + obtenerMes(maxMes) + " con " + maxVentas);
+        System.out.println("Año con mayor ventas: " + (2020 + maxAnio) + " con " + maxVentas);
+    }
+
+    public static String obtenerMes(int index) {
+        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"};
+        return meses[index];
+    }
+}
