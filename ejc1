@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class JavaApplication1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese tamaño del primer vector: ");
+        int n1 = sc.nextInt();
+        int[] v1 = new int[n1];
+        
+        System.out.print("Ingrese tamaño del segundo vector: ");
+        int n2 = sc.nextInt();
+        int[] v2 = new int[n2];
+        
+        System.out.println("Ingrese elementos del primer vector:");
+        for (int i = 0; i < n1; i++) {
+            v1[i] = sc.nextInt();
+        }
+        
+        System.out.println("Ingrese elementos del segundo vector:");
+        for (int i = 0; i < n2; i++) {
+            v2[i] = sc.nextInt();
+        }
+        
+        int[] resultado = concatenarVectores(v1, v2);
+        
+        System.out.println("Vector concatenado: " + Arrays.toString(resultado));
+    }
+    
+    public static int[] concatenarVectores(int[] v1, int[] v2) {
+        int[] mayor, menor;
+        if (v1.length >= v2.length) {
+            mayor = v1;
+            menor = v2;
+        } else {
+            mayor = v2;
+            menor = v1;
+        }
+        
+        int[] resultado = new int[mayor.length + menor.length];
+        System.arraycopy(mayor, 0, resultado, 0, mayor.length);
+        System.arraycopy(menor, 0, resultado, mayor.length, menor.length);
+        return resultado;
+    }
+}
