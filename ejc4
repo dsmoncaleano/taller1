@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class JavaApplication4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese el tamaño de la matriz (m x n): ");
+        int m = sc.nextInt(), n = sc.nextInt();
+        int[][] matriz = generarMatrizAlterna(m, n);
+        imprimirMatriz(matriz);
+    }
+    
+    public static int[][] generarMatrizAlterna(int m, int n) {
+        int[][] matriz = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                matriz[i][j] = (i + j) % 2;
+            }
+        }
+        return matriz;
+    }
+    
+    public static void imprimirMatriz(int[][] matriz) {
+        for (int[] fila : matriz) {
+            System.out.println(Arrays.toString(fila));
+        }
+    }
+}
