@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class JavaApplication2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("Seleccione una opción: \n1. Evaluar número perfecto\n2. Evaluar número primo\n3. Salir");
+            opcion = sc.nextInt();
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingrese un número: ");
+                    int num = sc.nextInt();
+                    System.out.println(esPerfecto(num) ? "Es un número perfecto" : "No es un número perfecto");
+                    break;
+                case 2:
+                    System.out.print("Ingrese un número: ");
+                    num = sc.nextInt();
+                    System.out.println(esPrimo(num) ? "Es un número primo" : "No es un número primo");
+                    break;
+                case 3:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción no válida, intente de nuevo.");
+            }
+        } while (opcion != 3);
+    }
+    
+    public static boolean esPerfecto(int num) {
+        int suma = 1;
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) suma += i;
+        }
+        return suma == num;
+    }
+    
+    public static boolean esPrimo(int num) {
+        if (num < 2) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+}
